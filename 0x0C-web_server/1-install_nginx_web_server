@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# installs ngnix and configures it on a remote server
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx restart
