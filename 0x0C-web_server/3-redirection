@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Update apt package list
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get install nginx -y
+
+# Open the Nginx configuration file in a text editor
+sudo nano /etc/nginx/nginx.conf
+
+# Add the following location block to the server block in the configuration file
+echo "
+server {
+  listen 80;
+  server_name yourdomain.com;
+  location /redirect_me {
+    return 301 https://example.com;
+  }
+}
+" | sudo tee -a /etc/nginx/nginx.conf > /dev/null
+
+# Test the configuration file to make sure there are no syntax errors
+sudo nginx -t
+
+# Reload Nginx to apply the changes
+sudo systemctl reload nginx
+
+# Print success message
+echo "Nginx server configured successfully. /redirect_me now redirects to https://example.com with a 301 status code."
+
