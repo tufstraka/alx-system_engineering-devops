@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Displays informtation about subdomains.
+# Displays information about subdomains.
 
 # uncomment for debugging purposes.
 #set -x
